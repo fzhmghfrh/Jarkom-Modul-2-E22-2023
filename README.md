@@ -732,6 +732,7 @@ service apache2 restart
 lynx abimanyu.e22.com
 lynx abimanyu.e22.com/index.php/home
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/11.lynxabimanyu.e22.com.png)
 ## Soal 12
 Setelah itu ubahlah agar url www.abimanyu.yyy.com/index.php/home menjadi www.abimanyu.yyy.com/home.
 ### Jawab
@@ -764,6 +765,7 @@ service apache2 restart
 ```
 lynx abimanyu.e22.com/home
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/12.lynxabimanyu.e22.com-home.png)
 ## Soal 13
 Selain itu, pada subdomain www.parikesit.abimanyu.yyy.com, DocumentRoot disimpan pada /var/www/parikesit.abimanyu.yyy
 ### Jawab
@@ -799,6 +801,7 @@ service apache2 restart
 ```
 lynx abimanyu.e22.com/home
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/13.lynxparikesit.abimanyu.e22.com.png)
 ## Soal 14
 Pada subdomain tersebut folder /public hanya dapat melakukan directory listing sedangkan pada folder /secret tidak dapat diakses (403 Forbidden).
 ### Jawab
@@ -835,6 +838,9 @@ service apache2 restart
 lynx parikesit.abimanyu.e22.com/public
 lynx parikesit.abimanyu.e22.com/secret
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/14.lynxparikesit.abimanyu.e22.com-public.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/14.lynxparikesit.abimanyu.e22.com-secret-1.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/14.lynxparikesit.abimanyu.e22.com-secret-2.png)
 ## Soal 15
 Buatlah kustomisasi halaman error pada folder /error untuk mengganti error kode pada Apache. Error kode yang perlu diganti adalah 404 Not Found dan 403 Forbidden.
 ### Jawab
@@ -872,6 +878,10 @@ lynx parikesit.abimanyu.e22.com/secret
 ```
 lynx parikesit.abimanyu.e22.com/sembarang
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/15.lynxparikesit.abimanyu.e22.com-secret-1.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/15.lynxparikesit.abimanyu.e22.com-secret-2.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/15.lynxparikesit.abimanyu.e22.com-sembarang-1.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/15.lynxparikesit.abimanyu.e22.com-sembarang-2.png)
 ## Soal 16
 Buatlah suatu konfigurasi virtual host agar file asset www.parikesit.abimanyu.yyy.com/public/js menjadi 
 www.parikesit.abimanyu.yyy.com/js 
@@ -910,6 +920,7 @@ service apache2 restart
 lynx parikesit.abimanyu.e22.com/js
 lynx www.parikesit.abimanyu.e22.com/js
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/16.lynxparikesit.abimanyu.e22.com-js.png)
 ## Soal 17
 Agar aman, buatlah konfigurasi agar www.rjp.baratayuda.abimanyu.yyy.com hanya dapat diakses melalui port 14000 dan 14400.
 ### Jawab
@@ -966,6 +977,8 @@ service apache2 restart
 lynx rjp.baratayuda.abimanyu.e22.com:14000
 lynx rjp.baratayuda.abimanyu.e22.com:14400
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/17.lynxrjp.baratayuda.abimanyu.e22.com-14000.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/17.lynxrjp.baratayuda.abimanyu.e22.com-14400.png)
 ## Soal 18
 Untuk mengaksesnya buatlah autentikasi username berupa “Wayang” dan password “baratayudayyy” dengan yyy merupakan kode kelompok. Letakkan DocumentRoot pada /var/www/rjp.baratayuda.abimanyu.yyy.
 ### Jawab
@@ -1003,6 +1016,8 @@ service apache2 restart
 lynx rjp.baratayuda.abimanyu.e22.com:14000
 lynx rjp.baratayuda.abimanyu.e22.com:14400
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/18.lynxrjp.baratayuda.abimanyu.e22.com-14400-baratayudae22.png)
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/18.lynxrjp.baratayuda.abimanyu.e22.com-14400-Wayang.png)
 ## Soal 19
 Buatlah agar setiap kali mengakses IP dari Abimanyu akan secara otomatis dialihkan ke www.abimanyu.yyy.com (alias)
 ### Jawab
@@ -1027,6 +1042,7 @@ service apache2 restart
 ```
 lynx 192.217.1.4
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/11.lynxabimanyu.e22.com.png)
 ## Soal 20
 Karena website www.parikesit.abimanyu.yyy.com semakin banyak pengunjung dan banyak gambar gambar random, maka ubahlah request gambar yang memiliki substring “abimanyu” akan diarahkan menuju abimanyu.png.
 ### Jawab
@@ -1079,5 +1095,6 @@ service apache2 restart
 ```
 lynx parikesit.abimanyu.D06.com/public/images/not-abimanyu.png
 ```
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/20.lynxparikesit.abimanyu.e22.com-public-images-not-abimanyu.png)
 
 ## Kendala
