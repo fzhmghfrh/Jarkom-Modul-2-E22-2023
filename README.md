@@ -15,23 +15,28 @@ Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan ali
 1. Jalankan command `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.217.0.0/16` Pada node router.
    
 2. Jalankan commad berikut pada node YudhistiraDNSMaster untuk instalasi bind9:
-`echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
 apt-get update
-apt-get install bind9 -y`
+apt-get install bind9 -y
+```
 
 3. Masukkan konfigurasi berikut ke dalam /etc/bind/named.conf.local:
-`zone "arjuna.e22.com" {
+```
+zone "arjuna.e22.com" {
 type master;
 file "/etc/bind/jarkom/arjuna.e22.com";
-};`
+};
 
-`zone "2.217.192.in-addr.arpa" {
+zone "2.217.192.in-addr.arpa" {
 type master;
 file "/etc/bind/jarkom/2.217.192.in-addr.arpa";
-};`
+};
+```
 
 4. Masukkan konfigurasi berikut ke dalam /etc/bind/jarkom/arjuna.e22.com
-`;
+```
+;
 ; BIND data file for local loopback interface
 ;
 $TTL 604800
@@ -45,19 +50,25 @@ $TTL 604800
 @ IN NS arjuna.e22.com
 @ IN A 192.217.2.2
 www IN CNAME arjuna.e22.com.
-@ IN AAAA ::1`
+@ IN AAAA ::1
+```
 
 5. Nameserver setting lalu ping arjuna.e22.com pada sadewa client
-`nameserver 192.217.2.4
-nameserver 192.168.122.1`
+```
+nameserver 192.217.2.4
+nameserver 192.168.122.1
+```
 
 6. Check konfigurasi dns
-`apt-get update
+```
+apt-get update
 apt-get install dnsutils
-host -t PTR 192.217.2.4`
+host -t PTR 192.217.2.4
+```
 
 7. Masukan konfigurasi pada /etc/bindom/2.217.192.in-addr.arpa
-`;
+```
+;
 ; BIND data file for local loopback interface
 ;
 $TTL 604800
@@ -70,7 +81,8 @@ $TTL 604800
 ;
 2.217.192.in-addr.arpa IN NS arjuna.e22.com.
 4 IN PTR arjuna.e22.com.
-" > /etc/bind/jarkom/2.217.192.in-addr.arpa`
+" > /etc/bind/jarkom/2.217.192.in-addr.arpa
+```
 
 8. Restart bind dan ping
 <img width="860" alt="Jepretan Layar 2023-10-17 pukul 19 01 21" src="https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/assets/116636265/599a0d62-f2cd-45e7-852c-03f7ba43916b">
@@ -84,7 +96,8 @@ Dengan cara yang sama seperti soal nomor 2, buatlah website utama dengan akses k
 Kemudian, karena terdapat beberapa web yang harus di-deploy, buatlah subdomain parikesit.abimanyu.yyy.com yang diatur DNS-nya di Yudhistira dan mengarah ke Abimanyu.
 ### Jawab
 1. Ubah konfigruasi pada file /etc/bind/jarkom/abimanyu.e22.com pada YudhistiraDNSMaster:
-`;
+```
+;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -98,7 +111,8 @@ $TTL    604800
 @       IN      NS      abimanyu.e22.com.
 @       IN      A       192.217.1.4
 www     IN      CNAME   abimanyu.e22.com.
-parikesit       IN      A       192.217.1.4`
+parikesit       IN      A       192.217.1.4
+```
 
 2. Lakukan ping pada client, sebagai contoh adalah NakulaClient:
 <img width="878" alt="Jepretan Layar 2023-10-17 pukul 19 01 50" src="https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/assets/116636265/52fb5312-afe4-4704-b685-da4410fac5c6">
@@ -107,28 +121,31 @@ parikesit       IN      A       192.217.1.4`
 Buat juga reverse domain untuk domain utama. (Abimanyu saja yang direverse)
 ### Jawab
 1. Masukkan konfigurasi berikut pada file /etc/bind/named.conf.local pada node YudhistiraDNSMaster:
-`zone "arjuna.e22.com" {
+```
+zone "arjuna.e22.com" {
         type master;
         file "/etc/bind/jarkom/arjuna.e22.com";
-};`
+};
 
-`zone "abimanyu.e22.com" {
+zone "abimanyu.e22.com" {
         type master;
         file "/etc/bind/jarkom/abimanyu.e22.com";
-};`
+};
 
-`zone "2.217.192.in-addr.arpa" {
+zone "2.217.192.in-addr.arpa" {
     type master;
     file "/etc/bind/jarkom/2.217.192.in-addr.arpa";
-};`
+};
 
-`zone "1.217.192.in-addr.arpa" {
+zone "1.217.192.in-addr.arpa" {
     type master;
     file "/etc/bind/jarkom/1.217.192.in-addr.arpa";
-};`
+};
+```
 
 2. Masukkan konfigurasi berikut pada file /etc/bind/jarkom/2.217.192.in-addr.arpa:
-`;
+```
+;
 ; BIND data file for local loopback interface
 ;
 $TTL    604800
@@ -141,10 +158,11 @@ $TTL    604800
 ;
 2.217.192.in-addr.arpa.  IN      NS      arjuna.e22.com.
 2                       IN      PTR     arjuna.e22.com.
-`
+```
 
 3. Masukkan konfigurasi berikut pada file /etc/bind/jarkom/1.217.192.in-addr.arpa:
-`; BIND data file for local loopback interface
+```
+; BIND data file for local loopback interface
 ;
 $TTL    604800
 @       IN      SOA     abimanyu.e22.com. root.abimanyu.e22.com. (
@@ -155,79 +173,92 @@ $TTL    604800
                          604800 )       ; Negative Cache TTL
 ;
 1.217.192.in-addr.arpa.  IN      NS      abimanyu.e22.com.
-4                       IN      PTR     abimanyu.e22.com.`
+4                       IN      PTR     abimanyu.e22.com.
+```
    
 4. Lakukan restart bind9: `service bind9 restart`
    
 5. Lakukan instalasi dnsutils pada client dengan script berikut:
-`echo nameserver 192.168.122.1 > /etc/resolv.conf
+```
+echo nameserver 192.168.122.1 > /etc/resolv.conf
 apt-get update
 apt-get install dnsutils
-echo nameserver 192.217.2.4 > /etc/resolv.conf`
+echo nameserver 192.217.2.4 > /etc/resolv.conf
+```
 
 6. Lakukan testing host sebagai berikut:
-`host -t PTR 192.217.2.2 (IP ArjunaLoadBalancer)
-host -t PTR 192.217.1.4 (IP AbimanyuWebServer)`
+```
+host -t PTR 192.217.2.2 (IP ArjunaLoadBalancer)
+host -t PTR 192.217.1.4 (IP AbimanyuWebServer)
+```
 <img width="878" alt="Jepretan Layar 2023-10-17 pukul 19 02 37" src="https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/assets/116636265/6d11b8b6-afaa-4c8d-8f6d-611ea6a11f2e">
 
 ## Soal 6
 Agar dapat tetap dihubungi ketika DNS Server Yudhistira bermasalah, buat juga Werkudara sebagai DNS Slave untuk domain utama.
 ### Jawab
 1. Masukkan konfigurasi berikut pada file /etc/bind/named.conf.local pada node YudhistiraDNSMaster:
-`zone "arjuna.e22.com" {
+```
+zone "arjuna.e22.com" {
         type master;
         notify yes;
         also-notify { 192.217.2.3; }; // IP Werkudara
         allow-transfer { 192.217.2.3; }; // IP Werkudara
         file "/etc/bind/jarkom/arjuna.e22.com";
-};`
+};
 
-`zone "abimanyu.e22.com" {
+zone "abimanyu.e22.com" {
         type master;
         notify yes;
         also-notify { 192.217.2.3; }; // IP Werkudara
         allow-transfer { 192.217.2.3; }; // IP Werkudara
         file "/etc/bind/jarkom/abimanyu.e22.com";
-};`
+};
 
-`zone "2.217.192.in-addr.arpa" {
+zone "2.217.192.in-addr.arpa" {
     type master;
     file "/etc/bind/jarkom/2.217.192.in-addr.arpa";
-};`
+};
 
-`zone "1.217.192.in-addr.arpa" {
+zone "1.217.192.in-addr.arpa" {
     type master;
     file "/etc/bind/jarkom/1.217.192.in-addr.arpa";
-};`
+};
+```
 
 2. Kemudian lakukan restart bind9: `service bind9 restart`
    
 3. Kemudian instalasi bind9 berikut pada WerkudaraDNSSlave:
-`echo nameserver 192.168.122.1 > /etc/bind/named.conf.local
+```
+echo nameserver 192.168.122.1 > /etc/bind/named.conf.local
 apt-get update
-pt-get install bind9 -y`
+pt-get install bind9 -y
+```
 
 4. Kemudian konfigurasi /etc/bind/named.conf.local pada node WerkudaraDNSSlave:
-`zone "arjuna.e22.com" {
+```
+zone "arjuna.e22.com" {
         type slave;
         masters { 192.217.2.4; }; // IP Yudhistira
         file "/var/lib/bind/arjuna.e22.com";
-};`
 
-`zone "abimanyu.e22.com" {
+
+zone "abimanyu.e22.com" {
         type slave;
         masters { 192.217.2.4; }; // IP Yudhistira
         file "/var/lib/bind/abimanyu.e22.com";
-};`
+};
+```
 
 5. Lakukan restart bind9 pada WerkudaraDNSSlave: `service bind9 restart`
 
 6. Matikan bind9 pada YudhistiraDNSMaster: `service bind9 stop`
    
 7. Lakukan testing pada client, sebagai contoh pada NakulaClient: 
-`echo nameserver 192.217.2.3 > /etc/resolv.conf
+```
+echo nameserver 192.217.2.3 > /etc/resolv.conf
 ping arjuna.e22.com
-ping abimanyu.e22.com`
+ping abimanyu.e22.com
+```
 <img width="882" alt="Jepretan Layar 2023-10-17 pukul 19 03 23" src="https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/assets/116636265/f64a86ed-a118-4156-84a4-bd920a06bc77">
 
 ## Soal 7
