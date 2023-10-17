@@ -8,7 +8,87 @@
 ## Soal 1
 Yudhistira akan digunakan sebagai DNS Master, Werkudara sebagai DNS Slave, Arjuna merupakan Load Balancer yang terdiri dari beberapa Web Server yaitu Prabakusuma, Abimanyu, dan Wisanggeni. Buatlah topologi dengan pembagian sebagai berikut. Folder topologi dapat diakses pada drive berikut 
 ### Jawab
-[]
+![image](https://github.com/fzhmghfrh/Jarkom-Modul-2-E22-2023/blob/main/Image/1.png)
+* Router
+```
+auto eth0
+ iface eth0 inet dhcp
+
+ auto eth1
+ iface eth1 inet static
+ 	address 192.217.1.1
+ 	netmask 255.255.255.0
+
+ auto eth2
+ iface eth2 inet static
+ 	address 192.217.2.1
+ 	netmask 255.255.255.0
+```
+* Yudistira
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.2.4
+ 	netmask 255.255.255.0
+ 	gateway 192.217.2.1
+```
+* Werkudara
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.2.3
+ 	netmask 255.255.255.0
+ 	gateway 192.217.2.1
+```
+* Arjuna
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.2.2
+ 	netmask 255.255.255.0
+ 	gateway 192.217.2.1
+```
+* Nakula
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.1.2
+ 	netmask 255.255.255.0
+ 	gateway 192.217.1.1
+```
+* Sadewa
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.1.3
+ 	netmask 255.255.255.0
+ 	gateway 192.217.1.1
+```
+* Abimanyu
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.1.4
+ 	netmask 255.255.255.0
+ 	gateway 192.217.1.1
+```
+* Prabukusuma
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.1.5
+ 	netmask 255.255.255.0
+ 	gateway 192.217.1.1
+```
+* Wisanggeni
+```
+auto eth0
+ iface eth0 inet static
+ 	address 192.217.1.6
+ 	netmask 255.255.255.0
+ 	gateway 192.217.1.1
+```
+
 ## Soal 2
 Buatlah website utama pada node arjuna dengan akses ke arjuna.yyy.com dengan alias www.arjuna.yyy.com dengan yyy merupakan kode kelompok.
 ### Jawab
